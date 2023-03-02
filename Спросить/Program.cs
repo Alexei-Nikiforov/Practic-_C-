@@ -12,32 +12,39 @@
 // i=8, value=2,   2>0, result=2
 
 
-int PositiveNumbers(string Numbers)
+int PositiveNumbers(string numbers)
 {
     int result = 0;
-    int val = 0;
+    int value = 0;
     
-    for(int i = 0; i < Numbers.Length; i++)
+    for(int i = 0; i < numbers.Length; i++)
     {                                                     
-        if (Numbers[i] == ' ')                                   
+        if (numbers[i] == ' ')                                   
         {
-            if(val > 0)
+            if(value > 0)
             {
                 result ++;
             }  
-            val = 0;                                                       
+            value = 0;                                                       
         }                                                        
         else                                                    
         {
-            if (val < 0)
+            if (value < 0)
             {
-                val = -1;
+                value = -1;
             }
             else
             {
-            val += (Convert.ToInt32(Numbers[i]) - 48);
-            Console.WriteLine(val);
-            }                                                
+                if(numbers[i] == '.'| numbers[i] == ','| numbers[i] == ':'| numbers[i] == ';') 
+                {
+                value = value + 0;
+                }
+                else
+                {
+                value += (Convert.ToInt32(numbers[i]) - 48); //????
+                Console.WriteLine(value);
+                }
+            }                                               
         }
     }
 return result;
@@ -51,6 +58,6 @@ if(numbers[numbers.Length - 1] != ' ')
     numbers = numbers + ' ';
 }
 
-int Coll = PositiveNumbers(numbers);
+int coll = PositiveNumbers(numbers);
 
-Console.WriteLine("Количество введеных целых чисел больше 0 = " + Coll);
+Console.WriteLine("Количество введеных целых чисел больше 0 = " + coll);
